@@ -1,67 +1,135 @@
-# Frontend Application
+# AI Agent Interface
 
-A simple web application with API integration using Pipedream webhooks.
+A modern, responsive web interface for interacting with AI agents through Pipedream webhooks.
 
 ## Features
 
-- Clean, responsive design
-- Form data submission to Pipedream webhook
-- Real-time response display
-- Input validation
-- Error handling
-- Mobile-friendly interface
+- **Real-time Chat Interface**: Clean, modern chat UI with message history
+- **Multiple AI Models**: Support for GPT-4, GPT-3.5, Claude, and other models
+- **Customizable Settings**: Adjustable creativity/temperature settings
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Session Statistics**: Track messages and token usage
+- **Error Handling**: Robust error handling and user feedback
+- **Conversation History**: Maintains context across multiple messages
 
 ## Files
 
-- `index.html` - Main HTML structure
-- `styles.css` - CSS styling and responsive design
-- `script.js` - JavaScript functionality and API integration
+- `index.html` - Main HTML structure and layout
+- `styles.css` - Modern CSS with responsive design and animations
+- `script.js` - JavaScript for AI agent interaction and UI management
 - `README.md` - This documentation
 
 ## Setup
 
-1. Clone or download this repository
-2. Update the webhook URL in `script.js` if needed
-3. Open `index.html` in a web browser
-4. Fill out the form and submit to test the webhook integration
+1. **Deploy to Netlify or GitHub Pages**:
+   - Fork or clone this repository
+   - Connect to your hosting platform
+   - The files are pre-configured for static hosting
+
+2. **Configure Webhook URL**:
+   - Update the webhook URL in the JavaScript if needed
+   - Current webhook: `https://eo1t8nbql9lyw2b.m.pipedream.net`
+
+3. **Test the Interface**:
+   - Open the deployed URL in your browser
+   - Start chatting with the AI agent
 
 ## Webhook Integration
 
-The application sends form data to a Pipedream webhook endpoint:
+The interface sends POST requests to the configured webhook endpoint with the following JSON structure:
 
-```javascript
-const WEBHOOK_URL = 'https://eo1t8nbql9lyw2b.m.pipedream.net';
+```json
+{
+  "message": "User's message",
+  "model": "gpt-4",
+  "temperature": 0.7,
+  "conversationHistory": [...],
+  "timestamp": "2024-01-01T12:00:00.000Z"
+}
 ```
 
-The webhook receives a JSON payload with:
-- `name` - User's name
-- `email` - User's email
-- `message` - User's message
-- `timestamp` - ISO timestamp of submission
-
-## Usage
-
-1. Open `index.html` in a web browser
-2. Fill out the form with your information
-3. Click "Submit" to send data to the webhook
-4. View the response in the response section
+Expected response format:
+```json
+{
+  "response": "AI agent's response",
+  "tokens": 150,
+  "model": "gpt-4"
+}
+```
 
 ## Customization
 
-You can customize the application by:
-- Modifying the CSS in `styles.css`
-- Adding new form fields in `index.html`
-- Extending the JavaScript functionality in `script.js`
-- Updating the webhook URL for your specific endpoint
+### Styling
+- Modify `styles.css` to change colors, fonts, and layout
+- The CSS uses CSS Grid and Flexbox for responsive design
+- Custom properties (CSS variables) for easy theme customization
+
+### Functionality
+- Extend `script.js` to add new features
+- Modify the AI model options in the HTML
+- Add new settings and controls as needed
+
+### Deployment
+- The files are optimized for static hosting
+- No server-side processing required
+- Works with Netlify, Vercel, GitHub Pages, etc.
 
 ## Browser Support
 
-This application works in all modern browsers including:
-- Chrome
+- Chrome/Chromium (recommended)
 - Firefox
 - Safari
 - Edge
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+## Performance
+
+- Lightweight and fast loading
+- Efficient message handling
+- Minimal external dependencies
+- Optimized for mobile devices
+
+## Security
+
+- No sensitive data stored locally
+- Secure HTTPS communication
+- Input validation and sanitization
+- XSS protection
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Webhook not responding**:
+   - Check the webhook URL is correct
+   - Verify the webhook is active in Pipedream
+   - Check browser console for errors
+
+2. **Messages not displaying**:
+   - Ensure JavaScript is enabled
+   - Check for console errors
+   - Verify HTML structure is intact
+
+3. **Mobile display issues**:
+   - Clear browser cache
+   - Check viewport meta tag
+   - Verify responsive CSS is loading
+
+### Development
+
+For local development:
+1. Clone the repository
+2. Open `index.html` in a web browser
+3. Use browser developer tools for debugging
+4. Test webhook integration with a local server
 
 ## License
 
-This project is open source and available under the [MIT License](LICENSE).
+MIT License - Feel free to use and modify for your projects.
+
+## Support
+
+For issues or questions:
+- Check the browser console for error messages
+- Review the webhook configuration
+- Verify all files are properly uploaded and accessible
