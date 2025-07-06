@@ -3,40 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frontend Application</title>
+    <title>AI Agent Interface</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Frontend Application</h1>
-            <p>A simple web application with API integration</p>
+        <header class="header">
+            <h1>AI Agent Assistant</h1>
+            <p>Intelligent conversational AI powered by advanced language models</p>
         </header>
         
-        <main>
-            <section class="form-section">
-                <h2>Send Data</h2>
-                <form id="dataForm">
-                    <div class="form-group">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required>
+        <main class="main-content">
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot-message">
+                        <div class="message-content">
+                            <p>Hello! I'm your AI assistant. How can I help you today?</p>
+                        </div>
+                        <div class="message-timestamp"></div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message:</label>
-                        <textarea id="message" name="message" rows="4" required></textarea>
-                    </div>
-                    <button type="submit">Submit</button>
-                </form>
-            </section>
+                </div>
+                
+                <div class="chat-input-container">
+                    <form id="chatForm" class="chat-form">
+                        <div class="input-group">
+                            <textarea 
+                                id="messageInput" 
+                                placeholder="Type your message here..." 
+                                rows="3"
+                                maxlength="2000"
+                                required
+                            ></textarea>
+                            <button type="submit" id="sendButton" class="send-button">
+                                <span class="button-text">Send</span>
+                                <span class="loading-spinner" style="display: none;">⏳</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
             
-            <section class="response-section">
-                <h2>Response</h2>
-                <div id="response" class="response-area"></div>
-            </section>
+            <div class="sidebar">
+                <div class="controls">
+                    <h3>Settings</h3>
+                    <div class="control-group">
+                        <label for="modelSelect">AI Model:</label>
+                        <select id="modelSelect">
+                            <option value="gpt-4">GPT-4</option>
+                            <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+                            <option value="claude-3">Claude 3</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="temperatureSlider">Creativity: <span id="temperatureValue">0.7</span></label>
+                        <input type="range" id="temperatureSlider" min="0" max="1" step="0.1" value="0.7">
+                    </div>
+                    <button id="clearChat" class="clear-button">Clear Chat</button>
+                </div>
+                
+                <div class="stats">
+                    <h3>Session Stats</h3>
+                    <div class="stat-item">
+                        <span>Messages: </span>
+                        <span id="messageCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Tokens Used: </span>
+                        <span id="tokenCount">0</span>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
     
